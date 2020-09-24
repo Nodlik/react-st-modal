@@ -18,6 +18,12 @@ export default {
             format: 'esm',
             sourcemap: true,
         },
+        {
+            file: '../nextjs-modal/components/Modal/index.js',
+            // file: 'build/index.js',
+            format: 'esm',
+            sourcemap: true,
+        },
     ],
     plugins: [
         typescript({ useTsconfigDeclarationDir: true }),

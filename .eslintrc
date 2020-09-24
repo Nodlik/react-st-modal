@@ -12,7 +12,6 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "airbnb/hooks",
-        "plugin:jest/recommended",
         "prettier",
         "prettier/react",
         "prettier/@typescript-eslint",
@@ -26,22 +25,16 @@
         "project": "tsconfig.json",
         "tsconfigRootDir": "."
     },
-    "plugins": ["typescript", "@typescript-eslint", "react", "@typescript-eslint", "jest"],
+    "plugins": ["typescript", "@typescript-eslint", "react", "@typescript-eslint"],
     "rules": {
         "no-console": "off",
         "strict": ["error", "global"],
-        "curly": "warn",
-        "@typescript-eslint/no-unsafe-call": "off",
-        "@typescript-eslint/no-unsafe-assignment": "off",
-        "@typescript-eslint/no-unsafe-member-access": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "curly": "warn"
     },
     "settings": {
         "react": {
             "pragma": "React",
             "version": "detect"
-        },
-        "linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }]
+        }
     }
 }

@@ -1,9 +1,132 @@
 .overlay {
     position: fixed;
+    overflow: hidden;
+    display: block;
     z-index: var(--st-overlay-z-index);
+
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+
     background-color: var(--st-overlay-color);
+    opacity: 1;
+
+    transition: var(--st-overlay-transition);
+    perspective: var(--st-overlay-perspective);
+
+    &.overlayHidden {
+        opacity: 0;
+        transition: var(--st-overlay-transition);
+    }
+}
+
+.modal {
+    position: fixed;
+    overflow: hidden;
+    z-index: calc(var(--st-overlay-z-index) + 1);
+
+    left: 50%;
+    top: 50%;
+    min-width: var(--st-modal-minWidth);
+
+    transform: var(--st-modal-transformVisible);
+    transition: var(--st-modal-transition);
+
+    border: var(--st-modal-border);
+    border-radius: var(--st-modal-borderRadius);
+    box-shadow: var(--st-modal-boxShadow);
+
+    background-color: var(--st-modal-backgroundColor);
+    opacity: 1;
+
+    &.modalHidden {
+        opacity: 0;
+        transform: var(--st-modal-transformHidden);
+        transition: var(--st-modal-transition);
+    }
+}
+
+.modalTitle {
+    text-transform: uppercase;
+    font-size: 80%;
+    font-weight: bold;
+    padding: 1rem 1rem 0.5em 1rem;
+    color: var(--st-modal-titleTextColor);
+    border-bottom: solid 1px var(--st-modal-secondColor);
+}
+
+.modalContent {
+    padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.promtInput {
+    width: 100%;
+    padding: var(--st-input-padding);
+    border: var(--st-input-border);
+    border-radius: var(--st-input-borderRadius);
+}
+
+.promtErrorInput {
+    composes: promtInput;
+    border-color: var(--st-button-dangerColor);
+    box-shadow: 0 0 3px var(--st-button-dangerColor);
+}
+
+.promtErrorText {
+	color: var(--st-button-dangerColor);
+	font-size: 80%;
+	font-style: italic;
+}
+
+.modalButtonPlace {
+    display: flex;
+    justify-content: flex-end;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 0.5em 1em;
+
+    background-color: var(--st-modal-secondColor);
+
+    > button {
+        margin-left: 1em;
+    }
+}
+
+.modalCloseIcon {
+    border: none;
+    background: none;
+    display: block;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    cursor: pointer;
+
+    svg {
+        width: 15px;
+        height: 15px;
+
+        fill: var(--st-modal-titleTextColor);
+    }
+}
+
+.dialog {
+    width: var(--st-dialog-baseWidth);
+    max-width: var(--st-dialog-maxWidth);
+}
+
+.staticDialog {
+    width: 0;
+    height: 0;
+    z-index: -1;
+}
+
+.alert {
+    composes: dialog;
 }

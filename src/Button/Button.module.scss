@@ -1,0 +1,65 @@
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 0.8em 3em;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 80%;
+    text-transform: uppercase;
+    font-weight: bolder;
+
+    svg {
+        margin-right: 3px;
+    }
+
+    &:active {
+        padding: 0.9em 3em 0.7em 3em;
+    }
+}
+
+.--primary {
+    composes: button;
+    background-color: var(--st-button-primaryColor);
+    color: var(--st-button-primaryTextColor);
+}
+
+.--danger {
+    composes: button;
+    background-color: var(--st-button-dangerColor);
+    color: var(--st-button-dangerTextColor);
+}
+
+.--light {
+    composes: button;
+    background-color: var(--st-button-lightColor);
+    color: var(--st-button-lightTextColor);
+}
+
+.--dark {
+    composes: button;
+    background-color: var(--st-button-darkColor);
+    color: var(--st-button-darkTextColor);
+}
+
+.buttonPending {
+    pointer-events: none;
+    opacity: 0.8;
+    padding-left: 2.7em;
+
+    svg {
+        margin-right: 0.3em;
+        animation: spin 1s linear infinite;
+    }
+}
