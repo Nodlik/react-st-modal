@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { BaseDialogProps } from './types';
-import Button from '../Button/Button';
+import { BaseDialogProps } from '../../utils/types';
+import Button from '../UI/Button/Button';
 import Modal from './Modal';
 import styles from './Modal.module.scss';
 
-interface AlertDialogProps extends BaseDialogProps {
+interface AlertDialogProps extends BaseDialogProps<void> {
     buttonText?: string;
+    body?: string | JSX.Element;
 }
 
 export function AlertDialog(props: AlertDialogProps): JSX.Element | null {
@@ -29,6 +30,7 @@ export function AlertDialog(props: AlertDialogProps): JSX.Element | null {
         <Modal
             className={styles.alert}
             isOpen={isOpen}
+            onAttemptClose={close}
             onCompletelyHidden={() => {
                 if (props.onCompletelyHidden) {
                     props.onCompletelyHidden();

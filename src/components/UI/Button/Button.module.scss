@@ -6,12 +6,13 @@
 
 .button {
     display: inline-flex;
-    align-items: center;
+	align-items: center;
+	justify-content: center;
 
     position: relative;
     overflow: hidden;
 
-    padding: 0.8em 3em;
+    padding: 0.8rem 3rem;
 
     border: none;
     border-radius: 6px;
@@ -25,7 +26,7 @@
     }
 
     &:active {
-        padding: 0.9em 3em 0.7em 3em;
+        padding: 0.9rem 3rem 0.7rem 3rem;
     }
 }
 
@@ -56,10 +57,10 @@
 .buttonPending {
     pointer-events: none;
     opacity: 0.8;
-    padding-left: 2.7em;
+    padding-left: 2.7rem;
 
     svg {
-        margin-right: 0.3em;
+        margin-right: 0.3rem;
         animation: spin 1s linear infinite;
     }
 }

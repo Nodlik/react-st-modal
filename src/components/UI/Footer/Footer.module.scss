@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: flex-end;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: calc(var(--st-dialog-padding) / 2) var(--st-dialog-padding);
+
+    background-color: var(--st-modal-secondColor);
+
+    > button {
+        margin-left: 1rem;
+    }
+}

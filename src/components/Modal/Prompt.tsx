@@ -1,11 +1,11 @@
-import Button, { ButtonType } from '../Button/Button';
+import Button, { ButtonType } from '../UI/Button/Button';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { BaseDialogProps } from './types';
+import { BaseDialogProps } from '../../utils/types';
 import Modal from './Modal';
 import styles from './Modal.module.scss';
 
-interface PromptDialogProps extends BaseDialogProps {
+interface PromptDialogProps extends BaseDialogProps<string> {
     defaultValue?: string;
     okButtonText?: string;
     isRequired?: boolean;
@@ -16,7 +16,9 @@ interface PromptDialogProps extends BaseDialogProps {
 export function PromptDialog(props: PromptDialogProps): JSX.Element | null {
     const [isOpen, setOpen] = useState(true);
     const [isError, setError] = useState<boolean>(false);
-    const [value, setValue] = useState<string>(props.defaultValue);
+
+    const defaultValue = props.defaultValue !== undefined ? String(props.defaultValue) : undefined;
+    const [value, setValue] = useState<string>(defaultValue);
 
     const buttonRef = useRef<HTMLButtonElement>();
 
@@ -42,6 +44,7 @@ export function PromptDialog(props: PromptDialogProps): JSX.Element | null {
         <Modal
             className={styles.alert}
             isOpen={isOpen}
+            onAttemptClose={() => close(undefined)}
             onCompletelyHidden={() => {
                 if (props.onCompletelyHidden) {
                     props.onCompletelyHidden();

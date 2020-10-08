@@ -51,13 +51,15 @@
     text-transform: uppercase;
     font-size: 80%;
     font-weight: bold;
-    padding: 1rem 1rem 0.5em 1rem;
+    padding: var(--st-dialog-padding) var(--st-dialog-padding) calc(var(--st-dialog-padding) / 2)
+        var(--st-dialog-padding);
     color: var(--st-modal-titleTextColor);
     border-bottom: solid 1px var(--st-modal-secondColor);
 }
 
 .modalContent {
-    padding: 0.5rem 1rem 1rem 1rem;
+    padding: calc(var(--st-dialog-padding) / 2) var(--st-dialog-padding) var(--st-dialog-padding)
+        var(--st-dialog-padding);
 }
 
 .promtInput {
@@ -74,9 +76,9 @@
 }
 
 .promtErrorText {
-	color: var(--st-button-dangerColor);
-	font-size: 80%;
-	font-style: italic;
+    color: var(--st-button-dangerColor);
+    font-size: 80%;
+    font-style: italic;
 }
 
 .modalButtonPlace {
@@ -86,12 +88,12 @@
     position: relative;
     overflow: hidden;
 
-    padding: 0.5em 1em;
+    padding: calc(var(--st-dialog-padding) / 2) var(--st-dialog-padding);
 
     background-color: var(--st-modal-secondColor);
 
     > button {
-        margin-left: 1em;
+        margin-left: 1rem;
     }
 }
 
@@ -104,8 +106,8 @@
     padding: 0;
 
     position: absolute;
-    right: 1em;
-    top: 1em;
+    right: var(--st-dialog-padding);
+    top: var(--st-dialog-padding);
     cursor: pointer;
 
     svg {

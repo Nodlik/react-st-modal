@@ -19,7 +19,7 @@
     --st-modal-titleTextColor: #444444;
     --st-modal-secondColor: #f6f6f6;
 
-	// BUTTON	
+    // BUTTON
     --st-button-dangerColor: #ff5c5c;
     --st-button-dangerTextColor: #ffffff;
 
@@ -32,14 +32,15 @@
     --st-button-darkColor: #444444;
     --st-button-darkTextColor: #f6f6f6;
 
-	--st-button-borderRadius: 6px;
-	
-	// INPUT
-	--st-input-padding: 0.5em;
-	--st-input-border: solid 1px #eeeeee;
-	--st-input-borderRadius: 6px;
+    --st-button-borderRadius: 6px;
+
+    // INPUT
+    --st-input-padding: 0.5rem;
+    --st-input-border: solid 1px #eeeeee;
+    --st-input-borderRadius: 6px;
 
     // DIALOG
     --st-dialog-baseWidth: 90%;
     --st-dialog-maxWidth: 600px;
+	--st-dialog-padding: 1rem;
 }

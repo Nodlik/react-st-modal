@@ -1,13 +1,14 @@
-import Button, { ButtonType } from '../Button/Button';
+import Button, { ButtonType } from '../UI/Button/Button';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { BaseDialogProps } from './types';
+import { BaseDialogProps } from '../../utils/types';
 import Modal from './Modal';
 import styles from './Modal.module.scss';
 
-interface ConfirmDialogProps extends BaseDialogProps {
+interface ConfirmDialogProps extends BaseDialogProps<string> {
     okButtonText?: string;
     cancelButtonText?: string;
+    body?: string | JSX.Element;
 }
 
 export const enum ConfirmDialogResult {
@@ -15,7 +16,7 @@ export const enum ConfirmDialogResult {
     CANCEL = 'cancel',
 }
 
-export function ConfirmDialog(props: ConfirmDialogProps): JSX.Element | null {
+export function ConfirmDialog(props: ConfirmDialogProps): JSX.Element {
     const [isOpen, setOpen] = useState(true);
     const buttonRef = useRef<HTMLButtonElement>();
 
@@ -35,6 +36,7 @@ export function ConfirmDialog(props: ConfirmDialogProps): JSX.Element | null {
         <Modal
             className={styles.alert}
             isOpen={isOpen}
+            onAttemptClose={() => close(ConfirmDialogResult.CANCEL)}
             onCompletelyHidden={() => {
                 if (props.onCompletelyHidden) {
                     props.onCompletelyHidden();
