@@ -4,7 +4,7 @@
     "description": "React St Modal is a simple and flexible library for implementing modal dialogs for React JS",
     "author": "oleg.litovski9@gmail.com",
     "license": "MIT",
-    "main": "/build/index.js",
+    "main": "build/index.js",
     "scripts": {
         "build": "rollup -c",
         "build:dev": "rollup -c --watch",
