@@ -74,18 +74,23 @@ export async function Confirm(
     );
 }
 
-export interface CustomConfig<T> {
+export interface CustomConfig {
     title?: string;
-    showCloseIcon?: boolean;
+
     className?: string;
-    onAfterClose?: (result?: T) => void;
-    onAfterOpen?: () => void;
-    isCanClose?: boolean;
     defaultBodyOverflow?: string;
+
+    showCloseIcon?: boolean;
+    isCanClose?: boolean;
     isBodyScrollLocked?: boolean;
+
+    onAfterOpen?: () => void;
 }
 
-export async function CustomDialog<T>(body: JSX.Element, options?: CustomConfig<T>): Promise<T> {
+export async function CustomDialog<T>(
+    body: JSX.Element,
+    options?: CustomConfig
+): Promise<T | undefined> {
     return showModal<T>(Dialog, {
         ...options,
         children: body,

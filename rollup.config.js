@@ -1,6 +1,6 @@
 import autoprefixer from 'autoprefixer';
 import postcss from 'rollup-plugin-postcss';
-// import { terser } from 'rollup-plugin-terser';
+import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 
 const packageJson = require('./package.json');
@@ -13,14 +13,8 @@ export default {
     },
     output: [
         {
-            file: '../modal-demo/src/Modal/index.js',
-            // file: 'build/index.js',
-            format: 'esm',
-            sourcemap: true,
-        },
-        {
-            file: '../nextjs-modal/components/Modal/index.js',
-            // file: 'build/index.js',
+            // file: '../modal-demo/src/Modal/index.js',
+            file: 'build/index.js',
             format: 'esm',
             sourcemap: true,
         },
@@ -31,6 +25,6 @@ export default {
             plugins: [autoprefixer()],
             minimize: true,
         }),
-        // terser(),
+        terser(),
     ],
 };

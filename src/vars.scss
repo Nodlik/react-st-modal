@@ -1,7 +1,7 @@
 :root {
     --st-overlay-color: rgba(0, 0, 0, 0.4);
     --st-overlay-z-index: 1000;
-    --st-overlay-transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    --st-overlay-transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     --st-overlay-perspective: 1000px;
 
     // MODAL WINDOW
@@ -13,7 +13,7 @@
 
     --st-modal-transformVisible: translate3d(-50%, -50%, 0) scale(1) rotateX(0);
     --st-modal-transformHidden: translate3d(-50%, 100%, 0) scale(0.5) rotateX(-90deg);
-    --st-modal-transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    --st-modal-transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 
     --st-modal-backgroundColor: #ffffff;
     --st-modal-titleTextColor: #444444;
@@ -40,7 +40,8 @@
     --st-input-borderRadius: 6px;
 
     // DIALOG
-    --st-dialog-baseWidth: 90%;
+    --st-dialog-baseWidth: 95%;
     --st-dialog-maxWidth: 600px;
 	--st-dialog-padding: 1rem;
+	--st-dialog-maxContentHeight: 70vh;
 }
