@@ -29,8 +29,8 @@ React component `StaticDialog` is used to define modals in your JSX element.
 All interaction functions are async.
 | Method name | Parameters | Return type | Description|
 | ----------- | ---------- | ----------- | ---------- |
-| `Alert` | `body: string | JSX.Element`, `title?: string`, `buttonText?: string` | `void` | Shows a message (`body`) and waits for the user to press button |
-| `Confirm` | `body: string | JSX.Element`, `title?: string`, `okButtonText?: string`, `cancelButtonText?: string` | `boolean` | Shows a modal window with a text (`body`) and two buttons: OK and Cancel. The result is `true` if OK is pressed and `false` otherwise|
+| `Alert` | `body: JSX.Element (string)`, `title?: string`, `buttonText?: string` | `void` | Shows a message (`body`) and waits for the user to press button |
+| `Confirm` | `body: JSX.Element (string)`, `title?: string`, `okButtonText?: string`, `cancelButtonText?: string` | `boolean` | Shows a modal window with a text (`body`) and two buttons: OK and Cancel. The result is `true` if OK is pressed and `false` otherwise|
 | `Prompt` |`title?: string`, `options?: PromptConfig` | `string` | Shows a modal window with a text message, an input field for the visitor, and the buttons OK/Cancel|
 
 `PromptConfig` allows you to specify the following optional parameters:
