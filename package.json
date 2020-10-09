@@ -1,6 +1,6 @@
 {
     "name": "react-st-modal",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "React St Modal is a simple and flexible library for implementing modal dialogs for React JS",
     "author": "oleg.litovski9@gmail.com",
     "license": "MIT",
@@ -41,14 +41,14 @@
     },
     "dependencies": {},
     "keywords": [
-      "react",
-      "modal",
-      "dialog",
-      "alert",
-      "confirm",
-      "propmt",
-      "overlay",
-      "frontend",
-      "javascript"
+        "react",
+        "modal",
+        "dialog",
+        "alert",
+        "confirm",
+        "propmt",
+        "overlay",
+        "frontend",
+        "javascript"
     ]
 }
