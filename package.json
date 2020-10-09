@@ -1,15 +1,15 @@
 {
     "name": "react-st-modal",
-    "version": "0.0.1",
-    "description": "",
+    "version": "0.0.5",
+    "description": "React St Modal is a simple and flexible library for implementing modal dialogs for React JS",
+    "author": "oleg.litovski9@gmail.com",
+    "license": "MIT",
     "main": "/build/index.js",
     "scripts": {
         "build": "rollup -c",
         "build:dev": "rollup -c --watch",
         "eslint": "eslint . --ext .ts,.tsx"
     },
-    "author": "Nodlik",
-    "license": "MIT",
     "devDependencies": {
         "@rollup/plugin-commonjs": "^15.1.0",
         "@rollup/plugin-node-resolve": "^9.0.0",
@@ -39,5 +39,16 @@
         "typescript": "^4.0.3",
         "typescript-plugin-css-modules": "^2.7.0"
     },
-    "dependencies": {}
+    "dependencies": {},
+    "keywords": [
+      "react",
+      "modal",
+      "dialog",
+      "alert",
+      "confirm",
+      "propmt",
+      "overlay",
+      "frontend",
+      "javascript"
+    ]
 }

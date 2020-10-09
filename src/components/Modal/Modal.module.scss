@@ -44,7 +44,10 @@
         opacity: 0;
         transform: var(--st-modal-transformHidden);
         transition: var(--st-modal-transition);
-    }
+	}
+	
+	max-height: 95vh;
+	overflow-y: scroll;
 }
 
 .modalTitle {
