@@ -1,14 +1,25 @@
 [![GitHub license](https://img.shields.io/github/license/Nodlik/react-st-modal)](https://github.com/Nodlik/react-st-modal/blob/master/LICENSE) [![npm](https://img.shields.io/npm/v/react-st-modal)](https://www.npmjs.com/package/react-st-modal) [![npm](https://img.shields.io/npm/dm/react-st-modal)](https://npmcharts.com/compare/react-st-modal?minimal=true) [![](https://img.shields.io/badge/support-buymeacoffee-orange)](https://www.buymeacoffee.com/nndlik)
 
-# React St Modal
+# [React St Modal](https://nodlik.github.io/react-st-modal/)
+
+---
+
 React St Modal is a simple and flexible library for implementing modal dialogs for React JS.
 
 ### Features
 * Simple and easy to use api
 * Compatible with mobile devices
 * Implemented standard interaction functions: alert, confirm, prompt
+* Async/await syntax
+* Customization via css variables
 * Dynamic call of modal dialogs, which does not require definition in code
 * No third party libraries
+
+---
+
+**DEMO AND DOCS:** https://nodlik.github.io/react-st-modal/
+
+---
 
 ## Getting started
 
@@ -46,27 +57,27 @@ All interaction functions are async.
 import { Confirm } from 'react-st-modal';
 
 function ConfirmExample() {
-    return (
-        <div>
-            <button
-                onClick={async () => {
-                    const result = await Confirm('Сonfirmation text', 
-                        'Сonfirmation title');
-                    
-                    if (result) {
-                        // Сonfirmation confirmed
-                    } else {
-                        // Сonfirmation not confirmed
-                    }
-                }}
-            >
-                Show confirm
-            </button>
-        </div>
-    );
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const result = await Confirm('Сonfirmation text', 
+            'Сonfirmation title');
+          
+          if (result) {
+            // Сonfirmation confirmed
+          } else {
+            // Сonfirmation not confirmed
+          }
+        }}
+      >
+          Show confirm
+      </button>
+    </div>
+  );
 }
 ```
-
+---
 ### `CustomDialog`
 
 `CustomDialog` is an async function that shows any element in a modal window.
@@ -95,52 +106,52 @@ import { CustomDialog, useDialog } from 'react-st-modal';
 
 // The element to be shown in the modal window
 function CustomDialogContent() {
-    // use this hook to control the dialog
-    const dialog = useDialog();
+  // use this hook to control the dialog
+  const dialog = useDialog();
 
-    const [value, setValue] = useState();
+  const [value, setValue] = useState();
 
-    return (
-        <div>
-            <input
-                type="text"
-                onChange={(e) => {
-                    setValue(e.target.value);
-                }}
-            />
-            <button
-                onClick={() => {
-                    // Сlose the dialog and return the value
-                    dialog.close(value);
-                }}
-            >
-                Custom button
-            </button>
-        </div>
-    );
+  return (
+    <div>
+      <input
+        type="text"
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          // Сlose the dialog and return the value
+          dialog.close(value);
+        }}
+      >
+        Custom button
+      </button>
+    </div>
+  );
 }
 
 function CustomExample() {
-    return (
-        <div>
-            <button
-                onClick={async () => {
-                    const result = await CustomDialog(
-                        <CustomDialogContent />,
-                        {
-                            title: 'Custom Dialog',
-                            showCloseIcon: true,
-                        }
-                    );
-                }}
-            >
-                Custom
-            </button>
-        </div>
-    );
+  return (
+    <div>
+      <button
+        onClick={async () => {
+          const result = await CustomDialog(
+            <CustomDialogContent />,
+            {
+              title: 'Custom Dialog',
+              showCloseIcon: true,
+            }
+          );
+        }}
+      >
+        Custom
+      </button>
+    </div>
+  );
 }
 ```
-
+---
 ### `StaticDialog`
 `StaticDialog` it is a React component that used to define modals in your JSX element
 
@@ -161,36 +172,36 @@ function CustomExample() {
 import { StaticDialog, useDialog } from 'react-st-modal';
 
 function CustomStaticExample() {
-    const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
-    return (
-        <div>
-            <StaticDialog
-                isOpen={isOpen}
-                title="Custom static dialog"
-                onAfterClose={(result) => {
-                    setOpen(false);
-                    // do something with dialog result
-                }}
-            >
-                {/* see previous demo */}
-                <CustomDialogContent />
-            </StaticDialog>
+  return (
+    <div>
+      <StaticDialog
+        isOpen={isOpen}
+        title="Custom static dialog"
+        onAfterClose={(result) => {
+          setOpen(false);
+          // do something with dialog result
+        }}
+    >
+        {/* see previous demo */}
+          <CustomDialogContent />
+      </StaticDialog>
 
-            <div>
-              <button
-                  onClick={() => {
-                      setOpen(true);
-                  }}
-              >
-                  Custom static
-              </button>
-            <div>
-        </div>
+      <div>
+        <button
+          onClick={() => {
+              setOpen(true);
+          }}
+        >
+          Custom static
+        </button>
+      <div>
+    </div>
     );
 }
 ```
-
+---
 ### UI Elements
 
 To decorate your dialogs, you can use the following components: `ModalButton`, `ModalContent`, `ModalFooter`
@@ -200,37 +211,40 @@ To decorate your dialogs, you can use the following components: `ModalButton`, `
 import { ModalContent, ModalFooter, ModalButton, useDialog } from 'react-st-modal';
 
 function CustomDialogContent() {
-    const dialog = useDialog();
+  const dialog = useDialog();
 
-    const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>();
 
-    return (
-        <div>
-            <ModalContent>
-                <div>Custom dialog content</div>
-                <label>
-                    Input value:
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            setValue(e.target.value);
-                        }}
-                    />
-                </label>
-            </ModalContent>
-            <ModalFooter>
-                <ModalButton
-                    onClick={() => {
-                        dialog.close(value);
-                    }}
-                >
-                    Custom button
-                </ModalButton>
-            </ModalFooter>
-        </div>
-    );
+  return (
+      <div>
+        <ModalContent>
+          <div>Custom dialog content</div>
+          <label>
+            Input value:
+            <input
+              type="text"
+              onChange={(e) => {
+                setValue(e.target.value);
+              }}
+            />
+          </label>
+        </ModalContent>
+        <ModalFooter>
+          <ModalButton
+            onClick={() => {
+              dialog.close(value);
+            }}
+          >
+            Custom button
+          </ModalButton>
+        </ModalFooter>
+      </div>
+  );
 }
 ```
+
+---
+
 ### Contacts
 Oleg,
 

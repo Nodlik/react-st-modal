@@ -62,7 +62,8 @@
 
 .modalContent {
     padding: calc(var(--st-dialog-padding) / 2) var(--st-dialog-padding) var(--st-dialog-padding)
-        var(--st-dialog-padding);
+		var(--st-dialog-padding);
+	color: var(--st-dialog-contentColor);
 }
 
 .promtInput {
