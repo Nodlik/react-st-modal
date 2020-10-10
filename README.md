@@ -1,10 +1,14 @@
 [![GitHub license](https://img.shields.io/github/license/Nodlik/react-st-modal)](https://github.com/Nodlik/react-st-modal/blob/master/LICENSE) [![npm](https://img.shields.io/npm/v/react-st-modal)](https://www.npmjs.com/package/react-st-modal) [![npm](https://img.shields.io/npm/dm/react-st-modal)](https://npmcharts.com/compare/react-st-modal?minimal=true) [![](https://img.shields.io/badge/support-buymeacoffee-orange)](https://www.buymeacoffee.com/nndlik)
 
-# [React St Modal](https://nodlik.github.io/react-st-modal/)
+---
+
+# [react-st-modal](https://nodlik.github.io/react-st-modal/)
+
+![](https://media.giphy.com/media/FFR2Ul8b50VfG6z56U/giphy.gif)
 
 ---
 
-React St Modal is a simple and flexible library for implementing modal dialogs for React JS.
+React St Modal is a simple and flexible library for implementing modal dialogs.
 
 ### Features
 * Simple and easy to use api
@@ -32,17 +36,20 @@ You can install the latest version using npm:
 
 ### Overview
 To implement the functionality of modal dialogs this library has four functions and one react component. 
+
 Functions `Alert`, `Confirm`, `Prompt` implement the behavior of existing browser functions.
+
 Function `CustomDialog` shows any JSX element in a modal window.
+
 React component `StaticDialog` is used to define modals in your JSX element.
 
 ### Interaction: (`Alert`, `Prompt`, `Confirm`)
 All interaction functions are async.
 | Method name | Parameters | Return type | Description|
 | ----------- | ---------- | ----------- | ---------- |
-| `Alert` | `body: JSX.Element (string)`, `title?: string`, `buttonText?: string` | `void` | Shows a message (`body`) and waits for the user to press button |
-| `Confirm` | `body: JSX.Element (string)`, `title?: string`, `okButtonText?: string`, `cancelButtonText?: string` | `boolean` | Shows a modal window with a text (`body`) and two buttons: OK and Cancel. The result is `true` if OK is pressed and `false` otherwise|
-| `Prompt` |`title?: string`, `options?: PromptConfig` | `string` | Shows a modal window with a text message, an input field for the visitor, and the buttons OK/Cancel|
+| `Alert` | `body`: `JSX.Element (string)`, `title?`: `string`, `buttonText?`: `string` | `void` | Shows a message (`body`) and waits for the user to press button |
+| `Confirm` | `body`: `JSX.Element (string)`, `title?`: `string`, `okButtonText?`: `string`, `cancelButtonText?`: `string` | `boolean` | Shows a modal window with a text (`body`) and two buttons: OK and Cancel. The result is `true` if OK is pressed and `false` otherwise|
+| `Prompt` |`title?`: `string`, `options?`: `PromptConfig` | `string` | Shows a modal window with a text message, an input field for the visitor, and the buttons OK/Cancel|
 
 `PromptConfig` allows you to specify the following optional parameters:
 * `defaultValue: string | number`
@@ -96,6 +103,7 @@ function ConfirmExample() {
 * `onAfterOpen?: () => void` - event called after the dialog was opened
 
 To control a dialog from an inner element, use `useDialog<T>` hook
+
 `useDialog<T>` returns an object containing:
 * `isOpen: boolean` - the current state of the modal
 * `close: (result?: T) => void` - function that closes the dialog and returns the result
