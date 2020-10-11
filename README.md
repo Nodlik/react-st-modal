@@ -4,7 +4,7 @@
 
 # [react-st-modal](https://nodlik.github.io/react-st-modal/)
 
-![](https://media.giphy.com/media/FFR2Ul8b50VfG6z56U/giphy.gif)
+![](https://media.giphy.com/media/SbDnxOOlOR0K61W23i/giphy.gif)
 
 ---
 
@@ -30,7 +30,7 @@ React St Modal is a simple and flexible library for implementing modal dialogs.
 ### Installation
 You can install the latest version using npm:
 
-```bash
+```shell
   npm install react-st-modal
 ```
 
