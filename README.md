@@ -99,6 +99,7 @@ function ConfirmExample() {
 * `defaultBodyOverflow?: string` (default: `visible`) - default value to `body` css property `overflow`
 * `showCloseIcon?: boolean` (default: `false`) - show close button in the top corner of the window 
 * `isCanClose?: boolean` (default: `true`) - is it possible to close the dialog by clicking on the overlay or ESC button
+* `isFocusLock?: boolean` (default: `true`) - lock focus on modal
 * `isBodyScrollLocked?: boolean` (default: `true`) - content scrolling lock
 * `onAfterOpen?: () => void` - event called after the dialog was opened
 
@@ -171,6 +172,7 @@ function CustomExample() {
 * `defaultBodyOverflow?: string` (default: `visible`) - default value to `body` css property `overflow`
 * `showCloseIcon?: boolean` (default: `false`) - show close button in the top corner of the window
 * `isCanClose?: boolean` (default: `true`) - is it possible to close the dialog by clicking on the overlay or ESC button
+* `isFocusLock?: boolean` (default: `true`) - lock focus on modal
 * `isBodyScrollLocked?: boolean` (default: `true`) - content scrolling lock
 * `onAfterClose?: (result?: T) => void`  - event called after the dialog was closed
 * `onAfterOpen?: () => void`  - event called after the dialog was opened

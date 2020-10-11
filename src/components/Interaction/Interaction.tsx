@@ -92,6 +92,7 @@ export interface CustomConfig {
 
     className?: string;
     defaultBodyOverflow?: string;
+    isFocusLock?: boolean;
 
     showCloseIcon?: boolean;
     isCanClose?: boolean;

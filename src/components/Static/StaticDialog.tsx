@@ -15,6 +15,7 @@ export interface StaticDialogProps<T> {
     showCloseIcon?: boolean;
     isCanClose?: boolean;
     isBodyScrollLocked?: boolean;
+    isFocusLock?: boolean;
 
     onAfterClose?: (result?: T) => void;
     onAfterOpen?: () => void;

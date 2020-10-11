@@ -14,6 +14,7 @@ export interface DialogProps<T> extends BaseDialogProps<T> {
     isCanClose?: boolean;
     isOpen?: boolean;
     isStatic?: boolean;
+    isFocusLock?: boolean;
     defaultBodyOverflow?: string;
     isBodyScrollLocked?: boolean;
 }
@@ -67,6 +68,7 @@ export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
             describedby={`content_${dialogUniqId}`}
             isOpen={dialogState.isOpen}
             isStatic={props.isStatic}
+            isFocusLock={props.isFocusLock}
             defaultBodyOverflow={props.defaultBodyOverflow}
             isBodyScrollLocked={props.isBodyScrollLocked}
             onAttemptClose={onAttemptClose}
