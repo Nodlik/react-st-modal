@@ -22,6 +22,7 @@ type ButtonProps = {
     className?: string;
     formRole?: 'button' | 'submit';
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    autoFocus?: boolean;
 };
 
 function LoadingIcon(): JSX.Element {
@@ -41,6 +42,7 @@ const Button = forwardRef((props: ButtonProps, ref: MutableRefObject<HTMLButtonE
     return (
         <button
             ref={ref}
+            autoFocus={props.autoFocus}
             onClick={props.onClick}
             type={props.formRole || 'button'}
             disabled={props.state === ButtonState.DISABLED || props.state === ButtonState.PENDING}

@@ -57,7 +57,8 @@
     padding: var(--st-dialog-padding) var(--st-dialog-padding) calc(var(--st-dialog-padding) / 2)
         var(--st-dialog-padding);
     color: var(--st-modal-titleTextColor);
-    border-bottom: solid 1px var(--st-modal-secondColor);
+	border-bottom: solid 1px var(--st-modal-secondColor);
+	margin: 0;
 }
 
 .modalContent {

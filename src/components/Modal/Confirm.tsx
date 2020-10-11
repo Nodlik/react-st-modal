@@ -1,5 +1,5 @@
 import Button, { ButtonType } from '../UI/Button/Button';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import { BaseDialogProps } from '../../utils/types';
 import Modal from './Modal';
@@ -18,7 +18,7 @@ export const enum ConfirmDialogResult {
 
 export function ConfirmDialog(props: ConfirmDialogProps): JSX.Element {
     const [isOpen, setOpen] = useState(true);
-    const buttonRef = useRef<HTMLButtonElement>();
+    const dialogUniqId = (~~(Math.random() * 1e8)).toString(16);
 
     const close = (result: string) => {
         setOpen(false);
@@ -28,14 +28,12 @@ export function ConfirmDialog(props: ConfirmDialogProps): JSX.Element {
         }
     };
 
-    useEffect(() => {
-        buttonRef.current?.focus();
-    }, []);
-
     return (
         <Modal
             className={styles.alert}
             isOpen={isOpen}
+            labelledby={`header_${dialogUniqId}`}
+            describedby={`content_${dialogUniqId}`}
             onAttemptClose={() => close(ConfirmDialogResult.CANCEL)}
             onCompletelyHidden={() => {
                 if (props.onCompletelyHidden) {
@@ -43,14 +41,19 @@ export function ConfirmDialog(props: ConfirmDialogProps): JSX.Element {
                 }
             }}
         >
-            {props.title && <div className={styles.modalTitle}>{props.title}</div>}
-            <div className={styles.modalContent}>{props.body}</div>
+            {props.title && (
+                <div className={styles.modalTitle} id={`header_${dialogUniqId}`}>
+                    {props.title}
+                </div>
+            )}
+            <div className={styles.modalContent} id={`content_${dialogUniqId}`}>
+                {props.body}
+            </div>
             <div className={styles.modalButtonPlace}>
                 <Button
                     onClick={() => {
                         close(ConfirmDialogResult.OK);
                     }}
-                    ref={buttonRef}
                 >
                     {props.okButtonText || 'Ok'}
                 </Button>
@@ -58,6 +61,7 @@ export function ConfirmDialog(props: ConfirmDialogProps): JSX.Element {
                     onClick={() => {
                         close(ConfirmDialogResult.CANCEL);
                     }}
+                    autoFocus={true}
                     type={ButtonType.LIGHT}
                 >
                     {props.cancelButtonText || 'Cancel'}

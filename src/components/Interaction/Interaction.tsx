@@ -11,15 +11,28 @@ import { appendToBody } from '../../utils/helpers';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function showModal<T>(Dialog: DialogElement<T>, dialogProps?: any): Promise<T> {
-    const dialogPlace = appendToBody('stfDialogPlace');
+    const rootElement = appendToBody('stfDialogPlace');
+    const dialogPlace = document.createElement('div');
+    dialogPlace.classList.add('stf__modalDialogsPlace');
+
+    rootElement.appendChild(dialogPlace);
 
     return new Promise<T>((resolve) => {
+        const activeElement = document.activeElement as HTMLElement;
+
         const dialogClose = (result: T) => {
             resolve(result);
+
+            if (activeElement) {
+                if (rootElement.childNodes.length === 1) {
+                    activeElement.focus();
+                }
+            }
         };
 
         const dialogHidden = () => {
-            ReactDOM.render(<div></div>, dialogPlace);
+            ReactDOM.render(undefined, dialogPlace);
+            dialogPlace.remove();
         };
 
         ReactDOM.render(

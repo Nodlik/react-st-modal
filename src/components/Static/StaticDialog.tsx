@@ -1,6 +1,7 @@
+import React, { useEffect, useRef } from 'react';
+
 import Dialog from '../Modal/Dialog';
 import DialogContextProvider from '../../context/DialogContextProvider';
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { appendToBody } from '../../utils/helpers';
 
@@ -22,6 +23,17 @@ export interface StaticDialogProps<T> {
 }
 
 export default function StaticDialog<T>(props: StaticDialogProps<T>): JSX.Element {
+    const activeElement = useRef<HTMLElement>();
+
+    useEffect(() => {
+        if (props.isOpen) {
+            activeElement.current = document.activeElement as HTMLElement;
+        } else if (activeElement.current) {
+            activeElement.current.focus();
+            activeElement.current = null;
+        }
+    }, [props.isOpen]);
+
     return ReactDOM.createPortal(
         <DialogContextProvider>
             <Dialog {...props} isStatic={true} />

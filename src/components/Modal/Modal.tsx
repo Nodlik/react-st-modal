@@ -2,11 +2,13 @@ import '../../vars.scss';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
+import FocusLock from '../FocusLock/FocusLock';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
     isOpen?: boolean;
     isStatic?: boolean;
+    isFocusLock?: boolean;
     className?: string;
     children?: React.ReactNode;
     onCompletelyHidden?: () => void;
@@ -14,6 +16,8 @@ interface ModalProps {
     onAttemptClose?: () => void;
     defaultBodyOverflow?: string;
     isBodyScrollLocked?: boolean;
+    labelledby?: string;
+    describedby?: string;
 }
 
 export default function Modal(props: ModalProps): JSX.Element {
@@ -58,40 +62,45 @@ export default function Modal(props: ModalProps): JSX.Element {
     }, [handleEsc]);
 
     return (
-        <div
-            ref={overlayElement}
-            className={[
-                styles.overlay,
-                !isOpen ? styles.overlayHidden : '',
-                isCompletelyClose && !isOpen && props.isStatic ? styles.staticDialog : '',
-            ].join(' ')}
-            onClick={(e) => {
-                if (e.target === overlayElement.current) {
-                    props.onAttemptClose();
-                }
-            }}
-        >
+        <FocusLock isLocked={props.isFocusLock} isOpen={isOpen}>
             <div
-                role="dialog"
-                onTransitionEnd={() => {
-                    if (isOpenRef.current && props.onCompletelyVisible) {
-                        props.onCompletelyVisible();
-                    }
-                    if (!isOpenRef.current && props.onCompletelyHidden) {
-                        props.onCompletelyHidden();
-                    }
-                    if (props.isStatic) {
-                        setCompletelyClose(!isOpenRef.current);
+                ref={overlayElement}
+                className={[
+                    styles.overlay,
+                    !isOpen ? styles.overlayHidden : '',
+                    isCompletelyClose && !isOpen && props.isStatic ? styles.staticDialog : '',
+                ].join(' ')}
+                onClick={(e) => {
+                    if (e.target === overlayElement.current) {
+                        props.onAttemptClose();
                     }
                 }}
-                className={[
-                    styles.modal,
-                    props.className || '',
-                    !isOpen ? styles.modalHidden : '',
-                ].join(' ')}
             >
-                {props.children}
+                <div
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby={props.labelledby || ''}
+                    aria-describedby={props.describedby || ''}
+                    onTransitionEnd={() => {
+                        if (isOpenRef.current && props.onCompletelyVisible) {
+                            props.onCompletelyVisible();
+                        }
+                        if (!isOpenRef.current && props.onCompletelyHidden) {
+                            props.onCompletelyHidden();
+                        }
+                        if (props.isStatic) {
+                            setCompletelyClose(!isOpenRef.current);
+                        }
+                    }}
+                    className={[
+                        styles.modal,
+                        props.className || '',
+                        !isOpen ? styles.modalHidden : '',
+                    ].join(' ')}
+                >
+                    {props.children}
+                </div>
             </div>
-        </div>
+        </FocusLock>
     );
 }

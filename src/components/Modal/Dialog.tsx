@@ -22,6 +22,8 @@ export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
     const onClose = props.onClose;
     const onAfterClose = props.onAfterClose;
 
+    const dialogUniqId = (~~(Math.random() * 1e8)).toString(16);
+
     const isCanClose = props.isCanClose ?? true;
 
     const { dialogState, setDialogState } = useContext<DialogContextType>(DialogContext);
@@ -61,6 +63,8 @@ export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
     return (
         <Modal
             className={[styles.dialog, props.className].join(' ')}
+            labelledby={`header_${dialogUniqId}`}
+            describedby={`content_${dialogUniqId}`}
             isOpen={dialogState.isOpen}
             isStatic={props.isStatic}
             defaultBodyOverflow={props.defaultBodyOverflow}
@@ -74,7 +78,8 @@ export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
         >
             {props.showCloseIcon && (
                 <button
-                    className={styles.modalCloseIcon}
+                    className={['stf__dialogClose', styles.modalCloseIcon].join(' ')}
+                    aria-label="Close"
                     onClick={() => {
                         onAfterClose ? onAfterClose(dialogState.result as T) : close();
                     }}
@@ -82,8 +87,12 @@ export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
                     <CloseIcon />
                 </button>
             )}
-            {props.title && <div className={styles.modalTitle}>{props.title}</div>}
-            {props.children}
+            {props.title && (
+                <h3 className={styles.modalTitle} id={`header_${dialogUniqId}`}>
+                    {props.title}
+                </h3>
+            )}
+            <div id={`content_${dialogUniqId}`}>{props.children}</div>
         </Modal>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import { BaseDialogProps } from '../../utils/types';
 import Button from '../UI/Button/Button';
@@ -12,7 +12,7 @@ interface AlertDialogProps extends BaseDialogProps<void> {
 
 export function AlertDialog(props: AlertDialogProps): JSX.Element | null {
     const [isOpen, setOpen] = useState(true);
-    const buttonRef = useRef<HTMLButtonElement>();
+    const dialogUniqId = (~~(Math.random() * 1e8)).toString(16);
 
     const close = () => {
         setOpen(false);
@@ -21,15 +21,12 @@ export function AlertDialog(props: AlertDialogProps): JSX.Element | null {
             props.onClose();
         }
     };
-
-    useEffect(() => {
-        buttonRef.current?.focus();
-    }, []);
-
     return (
         <Modal
             className={styles.alert}
             isOpen={isOpen}
+            labelledby={`header_${dialogUniqId}`}
+            describedby={`content_${dialogUniqId}`}
             onAttemptClose={close}
             onCompletelyHidden={() => {
                 if (props.onCompletelyHidden) {
@@ -37,10 +34,16 @@ export function AlertDialog(props: AlertDialogProps): JSX.Element | null {
                 }
             }}
         >
-            {props.title && <div className={styles.modalTitle}>{props.title}</div>}
-            <div className={styles.modalContent}>{props.body}</div>
+            {props.title && (
+                <h3 className={styles.modalTitle} id={`header_${dialogUniqId}`}>
+                    {props.title}
+                </h3>
+            )}
+            <div className={styles.modalContent} id={`content_${dialogUniqId}`}>
+                {props.body}
+            </div>
             <div className={styles.modalButtonPlace}>
-                <Button onClick={close} ref={buttonRef}>
+                <Button onClick={close} autoFocus={true}>
                     {props.buttonText || 'Ok'}
                 </Button>
             </div>

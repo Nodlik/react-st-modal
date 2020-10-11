@@ -1,5 +1,5 @@
 import Button, { ButtonType } from '../UI/Button/Button';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BaseDialogProps } from '../../utils/types';
 import Modal from './Modal';
@@ -16,11 +16,10 @@ interface PromptDialogProps extends BaseDialogProps<string> {
 export function PromptDialog(props: PromptDialogProps): JSX.Element | null {
     const [isOpen, setOpen] = useState(true);
     const [isError, setError] = useState<boolean>(false);
+    const dialogUniqId = (~~(Math.random() * 1e8)).toString(16);
 
     const defaultValue = props.defaultValue !== undefined ? String(props.defaultValue) : undefined;
     const [value, setValue] = useState<string>(defaultValue);
-
-    const buttonRef = useRef<HTMLButtonElement>();
 
     const close = (result: string | undefined) => {
         setOpen(false);
@@ -36,14 +35,12 @@ export function PromptDialog(props: PromptDialogProps): JSX.Element | null {
         }
     }, [value, props]);
 
-    useEffect(() => {
-        buttonRef.current?.focus();
-    }, []);
-
     return (
         <Modal
             className={styles.alert}
             isOpen={isOpen}
+            labelledby={`header_${dialogUniqId}`}
+            describedby={`content_${dialogUniqId}`}
             onAttemptClose={() => close(undefined)}
             onCompletelyHidden={() => {
                 if (props.onCompletelyHidden) {
@@ -51,9 +48,13 @@ export function PromptDialog(props: PromptDialogProps): JSX.Element | null {
                 }
             }}
         >
-            {props.title && <div className={styles.modalTitle}>{props.title}</div>}
+            {props.title && (
+                <div className={styles.modalTitle} id={`header_${dialogUniqId}`}>
+                    {props.title}
+                </div>
+            )}
 
-            <div className={styles.modalContent}>
+            <div className={styles.modalContent} id={`content_${dialogUniqId}`}>
                 <input
                     type="text"
                     className={!isError ? styles.promtInput : styles.promtErrorInput}
@@ -62,6 +63,7 @@ export function PromptDialog(props: PromptDialogProps): JSX.Element | null {
                     }}
                     defaultValue={value}
                     name="promtDialog"
+                    autoFocus={true}
                 />
                 <div className={styles.promtErrorText}>
                     {(isError && props.errorText) ?? 'Value input required'}
@@ -77,7 +79,6 @@ export function PromptDialog(props: PromptDialogProps): JSX.Element | null {
                             close(value);
                         }
                     }}
-                    ref={buttonRef}
                 >
                     {props.okButtonText || 'Ok'}
                 </Button>
