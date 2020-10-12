@@ -1,22 +1,23 @@
 {
   "files": {
     "main.css": "/react-st-modal/static/css/main.748aa61b.chunk.css",
-    "main.js": "/react-st-modal/static/js/main.f0fae33b.chunk.js",
-    "main.js.map": "/react-st-modal/static/js/main.f0fae33b.chunk.js.map",
+    "main.js": "/react-st-modal/static/js/main.89284436.chunk.js",
+    "main.js.map": "/react-st-modal/static/js/main.89284436.chunk.js.map",
     "runtime-main.js": "/react-st-modal/static/js/runtime-main.9cc6d138.js",
     "runtime-main.js.map": "/react-st-modal/static/js/runtime-main.9cc6d138.js.map",
-    "static/js/2.93c47c65.chunk.js": "/react-st-modal/static/js/2.93c47c65.chunk.js",
-    "static/js/2.93c47c65.chunk.js.map": "/react-st-modal/static/js/2.93c47c65.chunk.js.map",
+    "static/js/2.e248dad3.chunk.js": "/react-st-modal/static/js/2.e248dad3.chunk.js",
+    "static/js/2.e248dad3.chunk.js.map": "/react-st-modal/static/js/2.e248dad3.chunk.js.map",
     "index.html": "/react-st-modal/index.html",
-    "precache-manifest.48cb4ad5ba5d711d93da70ce95752b8c.js": "/react-st-modal/precache-manifest.48cb4ad5ba5d711d93da70ce95752b8c.js",
+    "precache-manifest.a57f25ef371aaea350c8e11e60ef8849.js": "/react-st-modal/precache-manifest.a57f25ef371aaea350c8e11e60ef8849.js",
     "service-worker.js": "/react-st-modal/service-worker.js",
     "static/css/main.748aa61b.chunk.css.map": "/react-st-modal/static/css/main.748aa61b.chunk.css.map",
-    "static/js/2.93c47c65.chunk.js.LICENSE.txt": "/react-st-modal/static/js/2.93c47c65.chunk.js.LICENSE.txt"
+    "static/js/2.e248dad3.chunk.js.LICENSE.txt": "/react-st-modal/static/js/2.e248dad3.chunk.js.LICENSE.txt",
+    "static/js/main.89284436.chunk.js.LICENSE.txt": "/react-st-modal/static/js/main.89284436.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9cc6d138.js",
-    "static/js/2.93c47c65.chunk.js",
+    "static/js/2.e248dad3.chunk.js",
     "static/css/main.748aa61b.chunk.css",
-    "static/js/main.f0fae33b.chunk.js"
+    "static/js/main.89284436.chunk.js"
   ]
 }
