@@ -49,8 +49,8 @@
 
 .modalBody {
     position: relative;
-    max-height: 90vh;
-    overflow-y: scroll;
+	max-height: var(--st-dialog-maxContentHeight);
+    overflow-y: auto;
 }
 
 .modalTitle {
