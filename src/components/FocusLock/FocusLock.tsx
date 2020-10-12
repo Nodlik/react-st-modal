@@ -88,12 +88,14 @@ export default function FocusLock(props: FocusLockProps): JSX.Element {
             }
         };
 
-        window.addEventListener('keydown', handleKeyPress);
+        if (props.isOpen) {
+            window.addEventListener('keydown', handleKeyPress);
 
-        return () => {
-            window.removeEventListener('keydown', handleKeyPress);
-        };
-    }, [isLocked, focusableItems]);
+            return () => {
+                window.removeEventListener('keydown', handleKeyPress);
+            };
+        }
+    }, [isLocked, focusableItems, props.isOpen]);
 
     return <div ref={rootNode}>{props.children}</div>;
 }

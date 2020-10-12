@@ -27,6 +27,8 @@ export default function Modal(props: ModalProps): JSX.Element {
     const [isCompletelyClose, setCompletelyClose] = useState<boolean>(true);
 
     const isOpenRef = useRef(isOpen);
+    const isOverlayClick = useRef(false);
+
     const overlayElement = useRef<HTMLDivElement>();
 
     const handleEsc = useCallback(
@@ -70,8 +72,14 @@ export default function Modal(props: ModalProps): JSX.Element {
                     !isOpen ? styles.overlayHidden : '',
                     isCompletelyClose && !isOpen && props.isStatic ? styles.staticDialog : '',
                 ].join(' ')}
-                onClick={(e) => {
+                onMouseDown={(e) => {
                     if (e.target === overlayElement.current) {
+                        isOverlayClick.current = true;
+                    }
+                }}
+                onMouseUp={(e) => {
+                    if (e.target === overlayElement.current && isOverlayClick.current === true) {
+                        isOverlayClick.current = false;
                         props.onAttemptClose();
                     }
                 }}

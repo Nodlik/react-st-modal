@@ -1,6 +1,5 @@
 .overlay {
     position: fixed;
-    overflow: hidden;
     display: block;
     z-index: var(--st-overlay-z-index);
 
@@ -10,13 +9,13 @@
     height: 100%;
 
     background-color: var(--st-overlay-color);
-    opacity: 1;
+	opacity: 1;
 
-    transition: var(--st-overlay-transition);
+    transition:  var(--st-overlay-transition);
     perspective: var(--st-overlay-perspective);
 
     &.overlayHidden {
-        opacity: 0;
+		opacity: 0;
         transition: var(--st-overlay-transition);
     }
 }
@@ -24,14 +23,16 @@
 .modal {
     position: fixed;
     overflow: hidden;
+    display: block;
     z-index: calc(var(--st-overlay-z-index) + 1);
 
-    left: 50%;
-    top: 50%;
     min-width: var(--st-modal-minWidth);
 
     transform: var(--st-modal-transformVisible);
-    transition: var(--st-modal-transition);
+	transition: var(--st-modal-transition);
+
+    left: 50%;
+    top: 50%;
 
     border: var(--st-modal-border);
     border-radius: var(--st-modal-borderRadius);
@@ -43,11 +44,13 @@
     &.modalHidden {
         opacity: 0;
         transform: var(--st-modal-transformHidden);
-        transition: var(--st-modal-transition);
-	}
-	
-	max-height: 95vh;
-	overflow-y: scroll;
+    }
+}
+
+.modalBody {
+    position: relative;
+    max-height: 90vh;
+    overflow-y: scroll;
 }
 
 .modalTitle {
@@ -57,13 +60,13 @@
     padding: var(--st-dialog-padding) var(--st-dialog-padding) calc(var(--st-dialog-padding) / 2)
         var(--st-dialog-padding);
     color: var(--st-modal-titleTextColor);
-	border-bottom: solid 1px var(--st-modal-secondColor);
-	margin: 0;
+    border-bottom: solid 1px var(--st-modal-secondColor);
+    margin: 0;
 }
 
 .modalContent {
     padding: calc(var(--st-dialog-padding) / 2) var(--st-dialog-padding);
-	color: var(--st-dialog-contentColor);
+    color: var(--st-dialog-contentColor);
 }
 
 .promtInput {
@@ -108,6 +111,7 @@
     width: 15px;
     height: 15px;
     padding: 0;
+    overflow: hidden;
 
     position: absolute;
     right: var(--st-dialog-padding);

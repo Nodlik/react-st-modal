@@ -94,7 +94,9 @@ export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
                     {props.title}
                 </h3>
             )}
-            <div id={`content_${dialogUniqId}`}>{props.children}</div>
+            <div id={`content_${dialogUniqId}`} className={styles.modalBody}>
+                {props.children}
+            </div>
         </Modal>
     );
 }

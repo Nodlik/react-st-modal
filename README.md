@@ -16,6 +16,7 @@ React St Modal is a simple and flexible library for implementing modal dialogs.
 * Implemented standard interaction functions: alert, confirm, prompt
 * Async/await syntax
 * Customization via css variables
+* Accessibility and focus control
 * Dynamic call of modal dialogs, which does not require definition in code
 * No third party libraries
 

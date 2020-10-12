@@ -1,9 +1,14 @@
 {
     "name": "react-st-modal",
     "version": "1.0.2",
-    "description": "React St Modal is a simple and flexible library for implementing modal dialogs for React JS",
+    "description": "React St Modal is a simple and flexible library for implementing modal dialogs",
     "author": "oleg.litovski9@gmail.com",
     "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Nodlik/react-st-modal.git"
+    },
+    "homepage": "https://nodlik.github.io/react-st-modal/",
     "main": "build/index.js",
     "scripts": {
         "build": "rollup -c",
@@ -42,6 +47,7 @@
     "dependencies": {},
     "keywords": [
         "react",
+        "reactjs",
         "modal",
         "dialog",
         "alert",
