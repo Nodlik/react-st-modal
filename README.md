@@ -102,6 +102,8 @@ function ConfirmExample() {
 * `isCanClose?: boolean` (default: `true`) - is it possible to close the dialog by clicking on the overlay or ESC button
 * `isFocusLock?: boolean` (default: `true`) - lock focus on modal
 * `isBodyScrollLocked?: boolean` (default: `true`) - content scrolling lock
+* `replaceScrollBar?: boolean` (default: `true`) - whether to replace the body scrollbar with a placeholder
+* `scrollBarPlaceholderColor?: string` (default: `#eeeeee`) - default color for the scrollbar placeholder
 * `onAfterOpen?: () => void` - event called after the dialog was opened
 
 To control a dialog from an inner element, use `useDialog<T>` hook
@@ -175,6 +177,8 @@ function CustomExample() {
 * `isCanClose?: boolean` (default: `true`) - is it possible to close the dialog by clicking on the overlay or ESC button
 * `isFocusLock?: boolean` (default: `true`) - lock focus on modal
 * `isBodyScrollLocked?: boolean` (default: `true`) - content scrolling lock
+* `replaceScrollBar?: boolean` (default: `true`) - whether to replace the body scrollbar with a placeholder
+* `scrollBarPlaceholderColor?: string` (default: `#eeeeee`) - default color for the scrollbar placeholder
 * `onAfterClose?: (result?: T) => void`  - event called after the dialog was closed
 * `onAfterOpen?: () => void`  - event called after the dialog was opened
 

@@ -9,19 +9,19 @@
     height: 100%;
 
     background-color: var(--st-overlay-color);
-	opacity: 1;
+    opacity: 1;
 
-    transition:  var(--st-overlay-transition);
+    transition: var(--st-overlay-transition);
     perspective: var(--st-overlay-perspective);
 
     &.overlayHidden {
-		opacity: 0;
+        opacity: 0;
         transition: var(--st-overlay-transition);
     }
 }
 
 .modal {
-    position: fixed;
+    position: absolute;
     overflow: hidden;
     display: block;
     z-index: calc(var(--st-overlay-z-index) + 1);
@@ -29,7 +29,7 @@
     min-width: var(--st-modal-minWidth);
 
     transform: var(--st-modal-transformVisible);
-	transition: var(--st-modal-transition);
+    transition: var(--st-modal-transition);
 
     left: 50%;
     top: 50%;
@@ -49,7 +49,7 @@
 
 .modalBody {
     position: relative;
-	max-height: var(--st-dialog-maxContentHeight);
+    max-height: var(--st-dialog-maxContentHeight);
     overflow-y: auto;
 }
 

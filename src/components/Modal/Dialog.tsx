@@ -15,8 +15,11 @@ export interface DialogProps<T> extends BaseDialogProps<T> {
     isOpen?: boolean;
     isStatic?: boolean;
     isFocusLock?: boolean;
+
     defaultBodyOverflow?: string;
     isBodyScrollLocked?: boolean;
+    replaceScrollBar?: boolean;
+    scrollBarPlaceholderColor?: string;
 }
 
 export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
@@ -71,6 +74,8 @@ export default function Dialog<T>(props: DialogProps<T>): JSX.Element {
             isFocusLock={props.isFocusLock}
             defaultBodyOverflow={props.defaultBodyOverflow}
             isBodyScrollLocked={props.isBodyScrollLocked}
+            replaceScrollBar={props.replaceScrollBar}
+            scrollBarPlaceholderColor={props.scrollBarPlaceholderColor}
             onAttemptClose={onAttemptClose}
             onCompletelyHidden={() => {
                 if (props.onCompletelyHidden) {

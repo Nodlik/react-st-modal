@@ -98,6 +98,9 @@ export interface CustomConfig {
     isCanClose?: boolean;
     isBodyScrollLocked?: boolean;
 
+    replaceScrollBar?: boolean;
+    scrollBarPlaceholderColor?: string;
+
     onAfterOpen?: () => void;
 }
 

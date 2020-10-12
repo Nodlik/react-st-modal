@@ -12,13 +12,17 @@ interface ModalProps {
     isFocusLock?: boolean;
     className?: string;
     children?: React.ReactNode;
+    labelledby?: string;
+    describedby?: string;
+
+    defaultBodyOverflow?: string;
+    isBodyScrollLocked?: boolean;
+    replaceScrollBar?: boolean;
+    scrollBarPlaceholderColor?: string;
+
     onCompletelyHidden?: () => void;
     onCompletelyVisible?: () => void;
     onAttemptClose?: () => void;
-    defaultBodyOverflow?: string;
-    isBodyScrollLocked?: boolean;
-    labelledby?: string;
-    describedby?: string;
 }
 
 export default function Modal(props: ModalProps): JSX.Element {
@@ -50,16 +54,27 @@ export default function Modal(props: ModalProps): JSX.Element {
         isOpenRef.current = props.isOpen;
 
         if (isBodyScrollLocked) {
-            const scrollBarWidth = getScrollbarWidth();
-            document.body.style.borderRight = props.isOpen
-                ? `solid ${scrollBarWidth}px #eeeeee`
-                : 'none';
+            const replaceScrollBar = props.replaceScrollBar ?? true;
+
+            if (replaceScrollBar) {
+                document.body.style.borderRight = props.isOpen
+                    ? `solid ${getScrollbarWidth()}px ${
+                          props.scrollBarPlaceholderColor ?? '#eeeeee'
+                      }`
+                    : 'none';
+            }
 
             document.body.style.overflow = props.isOpen
                 ? 'hidden'
                 : props.defaultBodyOverflow || 'visible';
         }
-    }, [props.isOpen, isBodyScrollLocked, props.defaultBodyOverflow]);
+    }, [
+        props.isOpen,
+        props.defaultBodyOverflow,
+        props.scrollBarPlaceholderColor,
+        props.replaceScrollBar,
+        isBodyScrollLocked,
+    ]);
 
     useEffect(() => {
         window.addEventListener('keydown', handleEsc);

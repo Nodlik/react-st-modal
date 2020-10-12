@@ -17,6 +17,9 @@ export interface StaticDialogProps<T> {
     isBodyScrollLocked?: boolean;
     isFocusLock?: boolean;
 
+    replaceScrollBar?: boolean;
+    scrollBarPlaceholderColor?: string;
+
     onAfterClose?: (result?: T) => void;
     onAfterOpen?: () => void;
 
