@@ -9,3 +9,7 @@ export function appendToBody(id: string): HTMLElement {
 
     return result;
 }
+
+export function getScrollbarWidth(): number {
+    return window.innerWidth - document.documentElement.clientWidth;
+}

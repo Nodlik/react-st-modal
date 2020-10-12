@@ -3,6 +3,7 @@ import '../../vars.scss';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import FocusLock from '../FocusLock/FocusLock';
+import { getScrollbarWidth } from '../../utils/helpers';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -49,6 +50,11 @@ export default function Modal(props: ModalProps): JSX.Element {
         isOpenRef.current = props.isOpen;
 
         if (isBodyScrollLocked) {
+            const scrollBarWidth = getScrollbarWidth();
+            document.body.style.borderRight = props.isOpen
+                ? `solid ${scrollBarWidth}px #eeeeee`
+                : 'none';
+
             document.body.style.overflow = props.isOpen
                 ? 'hidden'
                 : props.defaultBodyOverflow || 'visible';
